@@ -1,0 +1,6 @@
+cryptography==2.7
+Flask==1.0.3
+Flask-Ask==0.9.8
+Jinja2==2.10.1
+Unidecode==1.0.23
+
