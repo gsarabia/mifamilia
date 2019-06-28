@@ -6,6 +6,7 @@ import logging
 app = Flask(__name__)
 ask = Ask(app, '/')
 
+
 @ask.launch
 def launch():
     welcome_text = render_template('welcome_text')
