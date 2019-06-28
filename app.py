@@ -3,8 +3,8 @@ from flask_ask import Ask, statement, question
 import datetime
 import logging
 
-application = Flask(__name__)
-ask = Ask(application, '/')
+app = Flask(__name__)
+ask = Ask(app, '/')
 
 @ask.launch
 def launch():
@@ -51,4 +51,4 @@ def birthday(firstname):
     return statement(response_text).simple_card('Cumple', response_text)
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run(debug=True)
