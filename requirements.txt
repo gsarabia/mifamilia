@@ -1,3 +1,4 @@
+pip==9.0.1
 cryptography==2.7
 Flask==1.0.3
 Flask-Ask==0.9.8
