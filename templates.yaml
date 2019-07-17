@@ -1,9 +1,0 @@
-welcome_text: Hola que necesitas saber
-
-info_birthday: Faltan {{ days}} días para el cumple de {{ firstname }}.
-
-birthday: Hoy es tu cumple {{ firstname}}. Felicidades!!!
-
-ask_name : De quien quieres saber {{ detalle }}
-
-ask_name_reprompt : Puedes repetir el nombre

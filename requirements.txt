@@ -1,7 +1,6 @@
-pip==9.0.1
-cryptography==2.7
-Flask==1.0.3
-Flask-Ask==0.9.8
-Jinja2==2.10.1
-oauth==1.0.1
-Unidecode==1.0.23
+ask-sdk==1.10.2
+ask-sdk-core==1.10.2
+ask-sdk-dynamodb-persistence-adapter==1.10.2
+ask-sdk-model==1.13.0
+ask-sdk-runtime==1.10.2
+
