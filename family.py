@@ -7,6 +7,7 @@ from ask_sdk_model.ui import SimpleCard
 from ask_sdk_model import Response
 
 import datetime
+import pytz
 import logging
 import six
 import math
@@ -16,6 +17,7 @@ sb = SkillBuilder()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+timezone = pytz.timezone('America/Mexico_City')
 
 class LaunchRequestHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
@@ -91,10 +93,10 @@ class BirthdayIntentHandler(AbstractRequestHandler):
         if name == 'violeta' or name == 'viole' or name == 'mama':
             next_bd = datetime.datetime(current_year, 8, 25)
             who = 'Viole'
-        elif name == 'zuri' or name == 'aylin' or name == 'princesa' or name == 'hermana':
+        elif name == 'zuri' or name == 'aylin' or name == 'princesa' or name == 'hermana' or name == 'suri' or name == 'sury':
             next_bd = datetime.datetime(current_year, 10, 31)
             who = 'Zuri'
-        elif name == 'evan' or name == 'damir' or name == 'hermano':
+        elif name == 'evan' or name == 'damir' or name == 'hermano' or name == 'eban':
             next_bd = datetime.datetime(current_year, 7, 28)
             who = 'Evan'
         elif name == 'gil' or name == 'gilberto' or name == 'papa':
@@ -104,6 +106,9 @@ class BirthdayIntentHandler(AbstractRequestHandler):
             next_bd = None
             who = None
         
+        if not next_bd is None:
+            next_bd = timezone.localize(next_bd)
+
         return (who, next_bd)
 
 
@@ -119,8 +124,12 @@ class BirthdayIntentHandler(AbstractRequestHandler):
             speechText = 'De quien quieres saber el cumple'
             return handler_input.response_builder.speak(speechText).response
 
-        today = datetime.datetime.now()
+        today = datetime.datetime.now(timezone)
         current_year = today.year
+        
+        #keep only date, remove time
+        today = datetime.datetime(current_year, today.month, today.day)
+        today = timezone.localize(today)
 
         name = firstname.value.lower()
 
@@ -133,7 +142,7 @@ class BirthdayIntentHandler(AbstractRequestHandler):
         if today < next_bd:
             days =  next_bd - today
         else:
-            days = datetime.datetime(current_year, next_bd.month, next_bd.day) - today 
+            days = timezone.localize(datetime.datetime(current_year, next_bd.month, next_bd.day)) - today 
             
         days_left = days.days
         
