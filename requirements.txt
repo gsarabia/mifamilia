@@ -3,5 +3,5 @@ ask-sdk-core==1.10.2
 ask-sdk-dynamodb-persistence-adapter==1.10.2
 ask-sdk-model==1.13.0
 ask-sdk-runtime==1.10.2
-cryptography==2.7
+cryptography==3.2
 pytz==2018.3
